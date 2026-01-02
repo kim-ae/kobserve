@@ -1,0 +1,237 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-09-01T19:45:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2023.5.8",
+  "resources": [
+    {
+      "_id": "req_root",
+      "parentId": "wrk_product_service",
+      "modified": 1733161500000,
+      "created": 1733161500000,
+      "url": "{{ _.base_url }}",
+      "name": "Root",
+      "description": "API root endpoint",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1733161500000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_health",
+      "parentId": "wrk_product_service",
+      "modified": 1733161500000,
+      "created": 1733161500000,
+      "url": "{{ _.base_url }}/health",
+      "name": "Health Check",
+      "description": "Check application and database health",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1733161500000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_products",
+      "parentId": "wrk_product_service",
+      "modified": 1733161500000,
+      "created": 1733161500000,
+      "url": "{{ _.base_url }}/products",
+      "name": "Get All Products",
+      "description": "Retrieve all products",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1733161500000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_product",
+      "parentId": "wrk_product_service",
+      "modified": 1733161500000,
+      "created": 1733161500000,
+      "url": "{{ _.base_url }}/products/{{ _.product_id }}",
+      "name": "Get Product by ID",
+      "description": "Retrieve a specific product by ID",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1733161500000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_create_product",
+      "parentId": "wrk_product_service",
+      "modified": 1733161500000,
+      "created": 1733161500000,
+      "url": "{{ _.base_url }}/products",
+      "name": "Create Product",
+      "description": "Create a new product",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Sample Product\",\n  \"price\": 29.99,\n  \"stock\": 100\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1733161500000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_update_product",
+      "parentId": "wrk_product_service",
+      "modified": 1733161500000,
+      "created": 1733161500000,
+      "url": "{{ _.base_url }}/products/{{ _.product_id }}",
+      "name": "Update Product",
+      "description": "Update an existing product",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Updated Product Name\",\n  \"price\": 39.99,\n  \"stock\": 150\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1733161500000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_delete_product",
+      "parentId": "wrk_product_service",
+      "modified": 1733161500000,
+      "created": 1733161500000,
+      "url": "{{ _.base_url }}/products/{{ _.product_id }}",
+      "name": "Delete Product",
+      "description": "Delete a product by ID",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1733161500000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "wrk_product_service",
+      "parentId": null,
+      "modified": 1733161500000,
+      "created": 1733161500000,
+      "name": "Product Service API",
+      "description": "NestJS Product Service API with OpenTelemetry and structured logging",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_development",
+      "parentId": "wrk_product_service",
+      "modified": 1733161500000,
+      "created": 1733161500000,
+      "name": "Development",
+      "data": {
+        "base_url": "http://localhost:3000",
+        "product_id": "1"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "base_url",
+          "product_id"
+        ]
+      },
+      "color": "#7d69cb",
+      "isPrivate": false,
+      "metaSortKey": -1733161500000,
+      "_type": "environment"
+    },
+    {
+      "_id": "env_production",
+      "parentId": "wrk_product_service",
+      "modified": 1733161500000,
+      "created": 1733161500000,
+      "name": "Production",
+      "data": {
+        "base_url": "https://your-production-domain.com",
+        "product_id": "1"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "base_url",
+          "product_id"
+        ]
+      },
+      "color": "#e74c3c",
+      "isPrivate": false,
+      "metaSortKey": -1733161500000,
+      "_type": "environment"
+    }
+  ]
+}

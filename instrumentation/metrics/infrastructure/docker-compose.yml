@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  # node-backend:
+  #   build: ../node-backend
+  #   command: ["src/index.js"]
+  #   ports:
+  #     - "3000:3000"
+  #     - "3001:3001"
+  #   environment:
+  #     - DB_USER=postgres
+  #     - DB_PASSWORD=postgres
+  #     - DB_NAME=product_service
+  #     - DB_HOST=postgres
+  #     - DB_PORT=5432
+  #     - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4318
+  #   depends_on:
+  #     - postgres
+  #     - otel-collector
+  #   restart: "no"
+  #   rm: true
+  # java-backend:
+  #   build: ../java-backend
+  #   ports:
+  #     - "8080:8080"
+  #     - "9090:9090"
+  #   environment:
+  #     - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/sales_service
+  #     - SPRING_DATASOURCE_USERNAME=postgres
+  #     - SPRING_DATASOURCE_PASSWORD=postgres
+  #     - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4318
+  #   depends_on:
+  #     - postgres
+  #     - otel-collector
+  #   restart: "no"
+  #   rm: true
+
+  # The equivalent docker run command would be:
+  # docker run \
+  #   --rm
+  #   --name postgres \
+  #   -p 5432:5432 \
+  #   -e POSTGRES_USER=postgres \
+  #   -e POSTGRES_PASSWORD=postgres \
+  #   -v postgres_data:/var/lib/postgresql/data \
+  #   -v ./db/schema.sql:/docker-entrypoint-initdb.d/schema.sql \
+  #   postgres:15-alpine
+  postgres:
+    image: postgres:15-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      #- postgres_data:/var/lib/postgresql/data
+      - ../node-backend/src/db/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    restart: "no"
+    rm: true
+
+  # The equivalent docker run command would be:
+  # docker run \
+  #   --rm \
+  #   --name otel-collector \
+  #   -v $(pwd)/otel-config.yaml:/etc/otel-collector-config.yaml \
+  #   -p 4317:4317 \
+  #   -p 4318:4318 \
+  #   -p 8888:8888 \
+  #   -p 8889:8889 \
+  #   -p 13133:13133 \
+  #   otel/opentelemetry-collector-contrib:latest \
+  #   --config=/etc/otel-collector-config.yaml
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    env_file:
+      - .ignore-env
+    volumes:
+      - ./otel-config.yaml:/etc/otel-collector-config.yaml
+    ports:
+      - "4318:4318"   # OTLP HTTP receiver
+    restart: "no"
+    rm: true
